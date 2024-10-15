@@ -2,7 +2,6 @@ from .common import *
 
 
 DEBUG = False
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

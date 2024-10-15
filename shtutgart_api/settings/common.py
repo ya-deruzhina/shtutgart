@@ -1,5 +1,5 @@
 """
-Django settings for sport_shop_api project.
+Django settings for shtutgart_api project.
 """
 
 import datetime
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_jwt',
 
     # Project apps
+    'apps.users',
     'apps.wb',
     'shtutgart_api',
 ]
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 USE_DJANGO_JQUERY = True
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'shtutgart_api.middlewares.RequestResponseLoggingMiddleWare'
 ]
 
 ROOT_URLCONF = 'shtutgart_api.urls'
@@ -93,6 +96,16 @@ DATABASES = {
     },
 }
 
+AUTH_USER_MODEL = 'users.User'
+SHELL_PLUS = 'ipython'
+
+SHELL_PLUS_PRE_IMPORTS = [
+    ('datetime', ('datetime', 'timedelta')),
+]
+
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
+
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 CELERY_DEFAULT_QUEUE = os.getenv('CELERY_DEFAULT_QUEUE')
 CELERY_DEFAULT_EXCHANGE = os.getenv('CELERY_DEFAULT_QUEUE')
@@ -128,7 +141,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+   # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'apps.users.services.auth.authentication_service.JSONWebTokenAuthentication',
+    ),
     'EXCEPTION_HANDLER': 'core.utils.exception_handler.exception_handler_wrapper',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 25
@@ -201,4 +217,22 @@ CACHES = {
 ADMIN_MAX_LOGIN_ATTEMPTS = 3
 ADMIN_NEW_LOGIN_TIMEOUT_MINUTES = 15
 
+
+# the name of the versions will be added to the endpount name as 
+# prefix: {HOST}/{version}/{endpoint_name}
+# In addition endpoint should be placed
+# into urlpatterns to urls_{version}.py file
+API_VERSIONS = ('v1', 'v2', )
+
+
+# Logging configuration
+# based on Loguru (https://github.com/Delgan/loguru)
+LOGURU_BACKTRACE = True
+LOGURU_DIAGNOSE = True
+LOG_LEVEL = "INFO"
+LOGURU_FORMAT = (
+    "[<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green>]"
+    "[<level>{level}</level>] "
+    "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>\n"
+)
 

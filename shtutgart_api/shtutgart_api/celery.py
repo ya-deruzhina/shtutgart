@@ -11,7 +11,7 @@ dotenv.load_dotenv(dotenv_path=path_to_env)
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'development')
 
-app = Celery('sport_shop_api')
+app = Celery('shtutgart_api')
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.

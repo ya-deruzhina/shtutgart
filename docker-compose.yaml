@@ -5,7 +5,7 @@ services:
         container_name: PostgreSQL
         image: postgres
         environment:
-            - POSTGRES_PASSWORD=Mariwa3886920
+            - POSTGRES_PASSWORD=123456789
             - POSTGRES_USER=postgres
         volumes:
             - postgres:/code/postgres

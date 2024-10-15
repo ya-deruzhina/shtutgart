@@ -3,6 +3,7 @@ from apps.wb.views import *
 
 
 urlpatterns = [
-    # path('catalog/<str:query>/', SearchView.as_view()),
+    path('product/', GetProductInfView.as_view()),
+    path('catalog/', CatalogListView.as_view()),
 
 ]

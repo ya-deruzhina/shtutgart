@@ -1,7 +1,7 @@
-# from apps.wb.views.catalog import CatalogListView
-# from apps.wb.views.one_product import ProductView
+from apps.wb.views.catalog import CatalogListView
+from apps.wb.views.one_product import GetProductInfView
 
-# all= (
-#     "ProductView",
-#     "CatalogListView"
-# )
+all= (
+    "GetProductInfView",
+    "CatalogListView"
+)

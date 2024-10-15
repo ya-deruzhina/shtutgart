@@ -1,4 +1,4 @@
-# from sport_shop_api.tasks.task_send_message import *
-# from sport_shop_api.celery import app as celery_app
+from shtutgart_api.tasks.task_save_product_inf import *
+from shtutgart_api.celery import app as celery_app
 
-# __all__ = ('celery_app',)
+__all__ = ('celery_app',)

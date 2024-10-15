@@ -1,4 +1,16 @@
-# Django REST API Sport Shop
+# Django REST API Shtutgart Centre
+
+# !!! After installing in Docker use next command in Docker Container
+1. pipenv run python manage.py makemigrations
+2. pipenv run python manage.py migrate
+3. pipenv run seed all
+
+
+## Or you can use command line in terminal
+1. docker exec -it {{id_container}} pipenv run python manage.py makemigrations
+2. docker exec -it {{id_container}} pipenv run python manage.py migrate
+3. docker exec -it {{id_container}} pipenv run python manage.py seed all
+
 
 ## How to install and run (without Docker)
 
@@ -50,37 +62,3 @@ to avoid duplication in database
 #### Provided seeds
 - admin - create admin user. NOTE: Don't forget to change admin password after running.
 
-# !!! After installing in Docker use next command in Docker Container
-1. pipenv run python manage.py makemigrations
-2. pipenv run python manage.py migrate
-3. pipenv run seed all
-
-
-## Or you can use command line in terminal
-1. docker exec -it {{id_container}} pipenv run python manage.py makemigrations
-2. docker exec -it {{id_container}} pipenv run python manage.py migrate
-3. docker exec -it {{id_container}} pipenv run python manage.py seed all
-
-
-# Search in Project
-## class Generics
-### Search by price and amount work in path catalog/?
-1. max_price = 10
-2. min_price = 10
-3. price_from_min
-4. price_from_max
-
-5. max_amount = 10
-6. min_amount = 10
-7. amount_from_min
-8. amount_from_max
-
-## Elasticsearch
-### Search by params work in path catalog/<str:query>/? query==search
-#### a complete match
-1. category = Neq
-2. name = New
-3. subcategory = New 
-            
-#### partial match
-4. description = New

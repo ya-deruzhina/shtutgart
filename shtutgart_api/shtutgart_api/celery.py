@@ -20,13 +20,4 @@ app = Celery('shtutgart_api')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.conf.broker_url = os.getenv('CELERY_BROKER_URL')
-
-
-
 app.autodiscover_tasks()
-
-@app.task(bind=True, ignore_result=True)
-def debug_task(self):
-    print ('task')
-
-debug_task.delay()

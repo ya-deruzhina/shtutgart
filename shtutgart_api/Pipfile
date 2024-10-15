@@ -21,6 +21,7 @@ pytest = "*"
 drf-spectacular = "*"
 django-redis ="*"
 redis-cli="*"
+requests="*"
 
 [dev-packages]
 pre-commit = "*"

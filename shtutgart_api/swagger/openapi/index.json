@@ -3,7 +3,7 @@
 
     "info": {
       "title": "Django REST Backend API",
-      "description": "This document provides use cases for Sport Shop Backend API",
+      "description": "This document provides use cases for Shtutgart Backend API",
       "version": "0.0.1"
     },
 
@@ -24,18 +24,9 @@
         "description": "Catalog related endpoints"
       },
       {
-        "name": "Products",
+        "name": "Product",
         "description": "Product related endpoints"
-      },
-      {
-        "name": "Basket",
-        "description": "Basket related endpoints"
-      },
-      {
-        "name": "Order",
-        "description": "Order related endpoints"
-      }
-
+      }      
     ],
 
     "components": {},

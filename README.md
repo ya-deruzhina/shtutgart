@@ -13,3 +13,6 @@
 # If you use PostgreSQL or Redis, use command line in terminal
 1. sudo /etc/init.d/postgresql stop
 2. sudo /etc/init.d/redis-server stop
+
+# For Test project use link: 
+http://127.0.0.1:8000/doc#/
